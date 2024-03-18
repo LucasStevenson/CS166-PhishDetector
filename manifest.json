@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "name": "PhishDetector",
+  "description": "Tells a user whether or not their currently open email is likely to be a phishing email",
+  "version": "1.0",
+  "action":{
+      "default_popup": "index.html",
+      "default_title": "PhishDetector"
+  },
+  "host_permissions": [
+    "https://mail.google.com/mail/u/*/#inbox/*"
+  ],
+}
