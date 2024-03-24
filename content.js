@@ -14,9 +14,8 @@ chrome.tabs.query({ active: true, lastFocusedWindow: true }, async (tabs) => {
     errMsgTag.innerText = "";
     // Get and parse email raw html
     const emailHTML = await getEmailPageRawHTML();
-    let subjectLine = emailHTML.querySelector(".hP").innerText.trim();
-    let emailSender = emailHTML.querySelector(".go").innerText.trim().slice(1, -1);
-    let emailBody = emailHTML.querySelector(".a3s.aiL").innerText.trim();
+    let { subjectLine, emailSender, emailBody } = getEmailContents(emailHTML);
+    // displays the email contents on the extension ui
     document.getElementById("subjectLine").innerText = subjectLine;
     document.getElementById("sender").innerText = emailSender;
     document.getElementById("emailBody").innerText = emailBody;
@@ -25,8 +24,7 @@ chrome.tabs.query({ active: true, lastFocusedWindow: true }, async (tabs) => {
 
 async function getEmailPageRawHTML() {
     let results = await chrome.tabs.query({ active: true, currentWindow: true }).then(function(tabs) {
-        var activeTab = tabs[0];
-        var activeTabId = activeTab.id;
+        let activeTabId = tabs[0].id;
         return chrome.scripting.executeScript({
             target: { tabId: activeTabId },
             func: _DOMtoString,
@@ -45,4 +43,12 @@ function _DOMtoString(selector) {
         selector = document.documentElement;
     }
     return selector.outerHTML;
+}
+
+// Gets the subject line, email sender, and email body
+function getEmailContents(emailHTML) {
+    let subjectLine = emailHTML.querySelector(".hP").innerText.trim();
+    let emailSender = emailHTML.querySelector("span[email].gD").getAttribute("email").trim();
+    let emailBody = emailHTML.querySelector(".a3s.aiL").innerText.trim();
+    return { subjectLine, emailSender, emailBody };
 }
