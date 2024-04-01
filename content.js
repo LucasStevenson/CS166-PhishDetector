@@ -6,7 +6,7 @@ chrome.tabs.query({ active: true, lastFocusedWindow: true }, async (tabs) => {
     let url = tabs[0].url;
     // Show error message if the currently open URL is not an email URL
     let errMsgTag = document.getElementById("emailNotOpenErr");
-    if (!url.match(/^https:\/\/mail\.google\.com\/mail\/u\/.*\/(\?.+)?#inbox\/.*/)) {
+    if (!url.match(/^https:\/\/mail\.google\.com\/mail\/u\/\d+\/(\?.+)?#.+(\/.*)?\/.{32}/)) {
         errMsgTag.innerText = "You need to have an email open in your browser";
         return;
     }
