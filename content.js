@@ -23,7 +23,7 @@ chrome.tabs.query({ active: true, lastFocusedWindow: true }, async (tabs) => {
 
 
 async function getEmailPageRawHTML() {
-    let results = await chrome.tabs.query({ active: true, currentWindow: true }).then(function(tabs) {
+    let results = await chrome.tabs.query({ active: true, currentWindow: true }).then(function (tabs) {
         let activeTabId = tabs[0].id;
         return chrome.scripting.executeScript({
             target: { tabId: activeTabId },

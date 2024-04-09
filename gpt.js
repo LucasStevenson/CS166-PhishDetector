@@ -8,7 +8,18 @@ async function handleSubmit() {
 
     // Send a request to the server with the prompt
     const endpointUrl_Turbo = "https://api.openai.com/v1/chat/completions";
-    var apiKey = "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";
+    const apiKey = window.config.OPENAI_API_KEY;
+    let prompt = "I need you to rate this email is suspicious of phishing or not.\n" +
+        "0 to be the least suspicious and 100 to be the most suspicious.\n" +
+        "I'm going to give you the sender email, subject, and content of email.\n" +
+        "Please return your response in this format:\n" +
+        "'Suspicious rate: number\n" +
+        "Reason: string'\n" +
+        "Ok here is the email\n" +
+        "Sender email: " + `${sender}` + ".\n" +
+        "Subject email: " + `${title}` + ".\n" +
+        "Content email: " + `${body}` + ".\n";
+
 
     await fetch(endpointUrl_Turbo, {
         body: JSON.stringify({
@@ -16,7 +27,7 @@ async function handleSubmit() {
             messages: [
                 {
                     role: "user",
-                    content: `Check the email is phishing:\nTitle: ${title}\nSender:${sender}\nEmail Body:${body}`,
+                    content: prompt,
                 },
             ],
             temperature: 1,
