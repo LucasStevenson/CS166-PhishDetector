@@ -1,19 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PhishingDetector</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container" style="width: 450px">
-        <h1>PhishDetector</h1>
-        <h2 id="emailNotOpenErr"></h2>
+      <button
+        id="checkButton"
+        style="
+          bottom: 5px;
+          position: fixed;
+          width: 15%;
+          height: 5%;
+          right: 42.5%;
+        "
+      >
+        Check
+      </button>
+      <script src="gpt.js"></script>
+      <h1>PhishDetector</h1>
+      <h2 id="emailNotOpenErr"></h2>
 
-        <h2 id="subjectLine"></h2>
-        <h4 id="sender"></h4>
-        <p id="emailBody"></p>
+      <h2 id="subjectLine"></h2>
+      <h4 id="sender"></h4>
+      <p id="emailBody"></p>
     </div>
-</body>
-<script src="./content.js"></script>
+  </body>
+  <script src="./content.js"></script>
 </html>
