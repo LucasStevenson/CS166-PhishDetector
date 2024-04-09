@@ -1,33 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PhishingDetector</title>
-  </head>
-  <body>
-    <div class="container" style="width: 450px">
-      <button
-        id="checkButton"
-        style="
+<link rel="stylesheet" href="./style.css">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PhishingDetector</title>
+</head>
+
+<body>
+  <div class="container" style="width: 450px">
+    <button id="checkButton" style="
           bottom: 5px;
           position: fixed;
           width: 15%;
           height: 5%;
           right: 42.5%;
-        "
-      >
-        Check
-      </button>
-      <h1>PhishDetector</h1>
-      <h2 id="emailNotOpenErr"></h2>
+        ">
+      Check
+    </button>
+    <script src="gpt.js"></script>
+    <h1><img src="images/icon.png" class="phishlogo">PhishDetector</h1>
+    <h2 id="emailNotOpenErr"></h2>
 
-      <h2 id="subjectLine"></h2>
-      <h4 id="sender"></h4>
+    <h2 id="subjectLine"></h2>
+    <h4 id="sender"></h4>
+    <!-- <h5>Content:</h5> -->
+    <div id="emailContentDiv" class="emailContentDiv">
       <p id="emailBody"></p>
     </div>
-  </body>
-  <script src="./config.js"></script>
-  <script src="./content.js"></script>
-  <script src="gpt.js"></script>
+    <h2></h2>
+</body>
+<script src="./content.js"></script>
+
 </html>
