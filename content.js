@@ -19,7 +19,7 @@ chrome.tabs.query({ active: true, lastFocusedWindow: true }, async (tabs) => {
     const emailHTML = await getEmailPageRawHTML();
     let { subjectLine, emailSender, emailBody } = getEmailContents(emailHTML);
     // displays the email contents on the extension ui
-    document.getElementById("subjectLine").innerText = subjectLine;
+    document.getElementById("subjectLine").innerText = "Subject: " + subjectLine;
     document.getElementById("sender").innerText = "From: " + emailSender;
     document.getElementById("emailBody").innerText = emailBody;
 });

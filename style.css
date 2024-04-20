@@ -1,13 +1,12 @@
 body {
-    /* text-align: center; */
     padding: 7px;
 }
 
 p {
     text-align: left;
-    background-color: #f0f1f2;
-    border-radius: 5px;
-    padding: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 4px;
 }
 
 .phishlogo {
@@ -17,11 +16,32 @@ p {
 }
 
 .emailContentDiv {
+    background-color: #f0f1f2;
     max-height: 170px;
     overflow-y: scroll;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    min-height: 130px;
 }
 
-/* ::-webkit-scrollbar {
+button {
+    bottom: 5px;
+    position: fixed;
+    width: 15%;
+    height: 7%;
+    right: 42.5%;
+    background-color: #33b249;
+    color: white;
+    border: none;
+}
+
+button:hover {
+    scale: 1.04;
+    font-weight: bold;
+}
+
+/*FOR PERSISTENT SCROLLBAR 
+::-webkit-scrollbar {
     -webkit-appearance: none;
     width: 7px;
 }
