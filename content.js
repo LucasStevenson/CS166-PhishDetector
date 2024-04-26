@@ -8,6 +8,9 @@ chrome.tabs.query({ active: true, lastFocusedWindow: true }, async (tabs) => {
     let errMsgTag = document.getElementById("emailNotOpenErr");
     if (!url.match(/^https:\/\/mail\.google\.com\/mail\/u\/\d+\/(\?.+)?#.+(\/.*)?\/.{32}/)) {
         errMsgTag.innerText = "You need to have an email open in your browser";
+        document.getElementById("emailBody").style.backgroundColor = 'white';
+        document.getElementById("emailContentDiv").style.maxHeight = 0;
+        document.getElementById("checkButton").style.visibility = 'hidden';
         return;
     }
     // Clear the error message if it exists
@@ -16,8 +19,8 @@ chrome.tabs.query({ active: true, lastFocusedWindow: true }, async (tabs) => {
     const emailHTML = await getEmailPageRawHTML();
     let { subjectLine, emailSender, emailBody } = getEmailContents(emailHTML);
     // displays the email contents on the extension ui
-    document.getElementById("subjectLine").innerText = subjectLine;
-    document.getElementById("sender").innerText = emailSender;
+    document.getElementById("subjectLine").innerText = "Subject: " + subjectLine;
+    document.getElementById("sender").innerText = "From: " + emailSender;
     document.getElementById("emailBody").innerText = emailBody;
 });
 

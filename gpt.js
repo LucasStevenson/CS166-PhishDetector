@@ -13,7 +13,7 @@ async function handleSubmit() {
         "0 to be the least suspicious and 100 to be the most suspicious.\n" +
         "I'm going to give you the sender email, subject, and content of email.\n" +
         "Please return your response in this format:\n" +
-        "'Suspicious rate: number\n" +
+        "'Suspicious percentage: number\n" +
         "Reason: string'\n" +
         "Ok here is the email\n" +
         "Sender email: " + `${sender}` + ".\n" +
